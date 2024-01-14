@@ -20,4 +20,7 @@ Filenames with spaces are not parsed properly and cannot be converted.
 
 ## Credits
 [stb_image](https://github.com/nothings/stb/blob/master/stb_image.h)
+
 [imageSpectrogram.pl](https://github.com/plurSKI/imageSpectrogram/blob/master/imageSpectrogram.pl)
+
+[wav_file.h](https://github.com/Numerix-DSP/wav_file)
