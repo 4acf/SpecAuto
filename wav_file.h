@@ -87,7 +87,7 @@ void wav_write_long (const int LongWord, FILE *FPtr);
 *
 ********************************************************/
 
-int wav_read_data (double *pData,
+inline int wav_read_data (double *pData,
                   FILE *FPtr,
                   const WAV_FILE_INFO WavInfo,
                   const int BufLen)
@@ -170,7 +170,7 @@ int wav_read_data (double *pData,
 *
 ********************************************************/
 
-void wav_write_data (const double *pData,
+inline void wav_write_data (const double *pData,
                     FILE *FPtr,
                     const WAV_FILE_INFO WavInfo,
                     const int BufLen)
@@ -218,7 +218,7 @@ void wav_write_data (const double *pData,
 *
 ********************************************************/
 
-int wav_read_data16 (short *pData,
+inline int wav_read_data16 (short *pData,
                     FILE *FPtr,
                     const WAV_FILE_INFO WavInfo,
                     const int BufLen)
@@ -288,7 +288,7 @@ int wav_read_data16 (short *pData,
 *
 ********************************************************/
 
-void wav_write_data16 (const short *pData,
+inline void wav_write_data16 (const short *pData,
                       FILE *FPtr,
                       const WAV_FILE_INFO WavInfo,
                       const int BufLen)
@@ -332,7 +332,7 @@ void wav_write_data16 (const short *pData,
 *
 ********************************************************/
 
-int wav_read_data32 (int *pData,
+inline int wav_read_data32 (int *pData,
                     FILE *FPtr,
                     const WAV_FILE_INFO WavInfo,
                     const int BufLen)
@@ -402,7 +402,7 @@ int wav_read_data32 (int *pData,
 *
 ********************************************************/
 
-void wav_write_data32 (const int *pData,
+inline void wav_write_data32 (const int *pData,
                       FILE *FPtr,
                       const WAV_FILE_INFO WavInfo,
                       const int BufLen)
@@ -442,7 +442,7 @@ void wav_write_data32 (const int *pData,
 *
 ********************************************************/
 
-short wav_read_word (FILE *FPtr)
+inline short wav_read_word (FILE *FPtr)
 
 {
     short       Word;
@@ -471,7 +471,7 @@ short wav_read_word (FILE *FPtr)
 *
 ********************************************************/
 
-int wav_read_long (FILE *FPtr)
+inline int wav_read_long (FILE *FPtr)
 
 {
     int    LongWord;
@@ -503,7 +503,7 @@ int wav_read_long (FILE *FPtr)
 *
 ********************************************************/
 
-void wav_write_word (const short Word,
+inline void wav_write_word (const short Word,
                     FILE *FPtr)
 
 {
@@ -530,7 +530,7 @@ void wav_write_word (const short Word,
 *
 ********************************************************/
 
-void wav_write_long (const int LongWord,
+inline void wav_write_long (const int LongWord,
                     FILE *FPtr)
 
 {
@@ -559,7 +559,7 @@ void wav_write_long (const int LongWord,
 *
 ********************************************************/
 
-WAV_FILE_INFO wav_read_header (FILE *FPtr)
+inline WAV_FILE_INFO wav_read_header (FILE *FPtr)
 
 {
     int             LongWord;
@@ -668,7 +668,7 @@ WAV_FILE_INFO wav_read_header (FILE *FPtr)
 *
 ********************************************************/
 
-void wav_write_header (FILE *FPtr,
+inline void wav_write_header (FILE *FPtr,
                       const WAV_FILE_INFO WavInfo)
 
 {
@@ -728,7 +728,7 @@ void wav_write_header (FILE *FPtr,
 *
 ********************************************************/
 
-void wav_display_info (const WAV_FILE_INFO WavInfo)
+inline void wav_display_info (const WAV_FILE_INFO WavInfo)
 
 {
     printf (".WAV File Info.\n\n");
@@ -764,7 +764,7 @@ void wav_display_info (const WAV_FILE_INFO WavInfo)
 *
 ********************************************************/
 
-WAV_FILE_INFO wav_set_info (const int SampleRate,
+inline WAV_FILE_INFO wav_set_info (const int SampleRate,
                            const int NumberOfSamples,
                            const short NumberOfChannels,
                            const short WordLength,
@@ -800,7 +800,7 @@ WAV_FILE_INFO wav_set_info (const int SampleRate,
 *
 ********************************************************/
 
-int wav_file_length (const char *fileName)
+inline int wav_file_length (const char *fileName)
 {
     FILE *fp;
     WAV_FILE_INFO WavInfo;
@@ -830,7 +830,7 @@ int wav_file_length (const char *fileName)
 *
 ********************************************************/
 
-WAV_FILE_INFO wav_read_file (double *pData,
+inline WAV_FILE_INFO wav_read_file (double *pData,
                             const char *fileName)
 {
     FILE *fp;
@@ -871,7 +871,7 @@ WAV_FILE_INFO wav_read_file (double *pData,
 *
 ********************************************************/
 
-int wav_write_file (const double *pData,
+inline int wav_write_file (const double *pData,
                    const char *fileName,
                    const WAV_FILE_INFO WavInfo,
                    const int BufLen)
@@ -919,7 +919,7 @@ int wav_write_file (const double *pData,
 *
 ********************************************************/
 
-int wav_write_file_scaled (const double *pData,
+inline int wav_write_file_scaled (const double *pData,
                           const char *fileName,
                           const WAV_FILE_INFO WavInfo,
                           const int BufLen)

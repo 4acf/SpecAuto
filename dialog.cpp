@@ -1,6 +1,5 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-
 #include "imgwav.h"
 
 Dialog::Dialog(QWidget *parent) :
