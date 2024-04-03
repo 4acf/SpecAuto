@@ -20,6 +20,7 @@ class imgwav
 {
 public:
     imgwav();
+    ~imgwav();
     void writeout(QString, QString, QDir);
 private:
     void add_sine(FILE*, WAV_FILE_INFO, float, std::vector<float>);
@@ -30,6 +31,8 @@ private:
 
 };
 
+/*
+
 imgwav::imgwav()
 {
 
@@ -38,6 +41,8 @@ imgwav::imgwav()
     this->BIT_DEPTH = 16;
 
 }
+
+imgwav::~imgwav(){}
 
 void imgwav::add_sine(FILE *fpOutputFile, WAV_FILE_INFO WavInfo, float length, std::vector<float> freqs){
 
@@ -135,6 +140,8 @@ void imgwav::writeout(QString tempdirPath, QString QFilename, QDir wavOutputDire
     fclose(fpOutputFile);
 
 }
+
+*/
 
 #endif
 
