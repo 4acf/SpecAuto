@@ -80,11 +80,9 @@ void imgwav::writeout(QDir temp, QDir wavOutputDirectory, QDir pngOutputDirector
 
             for(int y = 0; y < srcH; y++){
 
-                /*
                 if(mStop){
                     goto cleanup; //DOES THIS MAKE YOU UPSET
                 }
-                */
 
                 //get rgb variables
                 const unsigned char *pixel = data + (3 * (y * srcW + x));
@@ -110,14 +108,21 @@ void imgwav::writeout(QDir temp, QDir wavOutputDirectory, QDir pngOutputDirector
 
         }
 
+        cleanup:
+
         //clean up memory allocations and complete the wav header
         stbi_image_free(data);
         wav_write_header(fpOutputFile, WavInfo);
         fclose(fpOutputFile);
 
         //emit signal that a conversion has been completed
-        filescompleted++;
-        emit conversionComplete(fnCopy, wavOutputDirectory, pngOutputDirectory, filescompleted);
+        if(!mStop){
+            filescompleted++;
+            emit conversionComplete(fnCopy, wavOutputDirectory, pngOutputDirectory, filescompleted);
+        }
+        else{
+            wavOutputDirectory.remove(output.c_str());
+        }
 
     }
 
