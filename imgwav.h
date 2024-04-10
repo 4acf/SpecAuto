@@ -32,7 +32,7 @@ public slots:
     void stop();
 
 private:
-    void add_sine(FILE*, WAV_FILE_INFO, float, std::vector<float>);
+    void add_sine(FILE*, WAV_FILE_INFO, float, std::vector<float>&);
     bool mStop;
 };
 

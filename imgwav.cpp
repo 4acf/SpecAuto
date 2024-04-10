@@ -7,7 +7,7 @@ imgwav::imgwav()
 
 imgwav::~imgwav(){}
 
-void imgwav::add_sine(FILE *fpOutputFile, WAV_FILE_INFO WavInfo, float length, std::vector<float> freqs){
+void imgwav::add_sine(FILE *fpOutputFile, WAV_FILE_INFO WavInfo, float length, std::vector<float> &freqs){
 
     float max_no = pow(2, 16) / 2;
     length *= 44100;
