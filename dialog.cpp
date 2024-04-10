@@ -10,6 +10,7 @@ Dialog::Dialog(QWidget *parent) :
     setAcceptDrops(true);
     ui->progressBar->setValue(0);
     ui->progressBar->setVisible(false);
+    ui->cancelButton->setEnabled(false);
     ui->console->setReadOnly(true);
 }
 
@@ -51,8 +52,36 @@ void Dialog::sox_Command(QString filename, QDir wavOutputDirectory, QDir pngOutp
 
 }
 
+//these two functions could probably be one, but it's easier to read this way and it scales better (if you can call any changes to this app scaling)
+void Dialog::disable_buttons(){
+
+    ui->addButton->setEnabled(false);
+    ui->addItemButton->setEnabled(false);
+    ui->clearButton->setEnabled(false);
+    ui->deleteButton->setEnabled(false);
+    ui->replaceButton->setEnabled(false);
+    ui->runButton->setEnabled(false);
+
+    ui->cancelButton->setEnabled(true);
+}
+
+void Dialog::enable_buttons(){
+
+    ui->addButton->setEnabled(true);
+    ui->addItemButton->setEnabled(true);
+    ui->clearButton->setEnabled(true);
+    ui->deleteButton->setEnabled(true);
+    ui->replaceButton->setEnabled(true);
+    ui->runButton->setEnabled(true);
+
+    ui->cancelButton->setEnabled(false);
+
+}
+
+
 Dialog::~Dialog()
 {
+    emit on_stop();
     delete ui;
 }
 
@@ -282,36 +311,39 @@ void Dialog::on_runButton_clicked()
     QDir temp = tempdir.path();
     int filecount = temp.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files).count();
     ui->progressBar->setMaximum(filecount);
-    int filescompleted = 0;
 
     QMessageBox::information(this, "Press OK to begin", "Press OK to begin"); //include est time to complete???
+    connect(&img2wav, &imgwav::conversionComplete, this, &Dialog::onConversionComplete);
+    connect(this, &Dialog::on_stop, &img2wav, &imgwav::stop);
 
-    foreach(QString filename, temp.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files)){
+    disable_buttons();
+    QFuture<void> future = QtConcurrent::run(&imgwav::writeout, &img2wav, temp, wavOutputDirectory, pngOutputDirectory);
 
-        imgwav imgwav;
-        imgwav.writeout(tempdir.path(), filename, wavOutputDirectory);
+}
 
-        sox_Command(filename, wavOutputDirectory, pngOutputDirectory);
+void Dialog::onConversionComplete(QString filename, QDir wavOutputDirectory, QDir pngOutputDirectory, int filescompleted){
 
-        filescompleted++;
-        ui->progressBar->setValue(filescompleted);
+    sox_Command(filename, wavOutputDirectory, pngOutputDirectory);
 
-        //make background green to signify it is done
-        QList<QListWidgetItem*> match = ui->filenameList->findItems(filename, Qt::MatchExactly);
-        QListWidgetItem *current = match.at(0);
-        current->setBackground(QBrush(Qt::green));
+    ui->progressBar->setValue(filescompleted);
 
+    //make background green to signify it is done
+    QList<QListWidgetItem*> match = ui->filenameList->findItems(filename, Qt::MatchExactly);
+    QListWidgetItem *current = match.at(0);
+    current->setBackground(QBrush(Qt::green));
+
+    if(filescompleted == ui->progressBar->maximum()){
+        ui->console->append("All done.");
+        enable_buttons();
     }
-
-    ui->console->append("All done.");
 
 
 }
 
+void Dialog::on_cancelButton_clicked(){
 
+    emit on_stop();
+    enable_buttons();
 
-
-
-
-
+}
 

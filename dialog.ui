@@ -14,33 +14,20 @@
    <string>SpectrogramAutomation</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="1">
-    <widget class="QPushButton" name="clearButton">
+   <item row="2" column="1">
+    <widget class="QPushButton" name="addItemButton">
      <property name="text">
-      <string>Clear</string>
+      <string>Add Item</string>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" rowspan="6">
-    <widget class="QListWidget" name="filenameList">
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="dragEnabled">
-      <bool>false</bool>
-     </property>
-     <property name="dragDropMode">
-      <enum>QAbstractItemView::NoDragDrop</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QPushButton" name="runButton">
+   <item row="4" column="1">
+    <widget class="QPushButton" name="deleteButton">
      <property name="text">
-      <string>Run</string>
+      <string>Delete Item</string>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
@@ -57,15 +44,25 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="2">
+   <item row="8" column="0" colspan="2">
+    <widget class="QTextEdit" name="console"/>
+   </item>
+   <item row="10" column="0" colspan="2">
     <widget class="QProgressBar" name="progressBar">
      <property name="value">
       <number>24</number>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QTextEdit" name="console"/>
+   <item row="6" column="1">
+    <widget class="QPushButton" name="runButton">
+     <property name="text">
+      <string>Run</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item row="1" column="1">
     <widget class="QPushButton" name="addButton">
@@ -74,23 +71,33 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="deleteButton">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="clearButton">
      <property name="text">
-      <string>Delete Item</string>
+      <string>Clear</string>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="addItemButton">
+   <item row="7" column="1">
+    <widget class="QPushButton" name="cancelButton">
      <property name="text">
-      <string>Add Item</string>
+      <string>Cancel</string>
      </property>
-     <property name="autoDefault">
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="7">
+    <widget class="QListWidget" name="filenameList">
+     <property name="acceptDrops">
+      <bool>true</bool>
+     </property>
+     <property name="dragEnabled">
       <bool>false</bool>
+     </property>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::NoDragDrop</enum>
      </property>
     </widget>
    </item>

@@ -15,15 +15,25 @@
 #include <vector>
 #include <cmath>
 #include <string>
+#include <QDebug>
 
-class imgwav
+class imgwav : public QObject
 {
+    Q_OBJECT
 public:
     imgwav();
     ~imgwav();
-    void writeout(QString, QString, QDir);
+    void writeout(QDir, QDir, QDir);
+
+signals:
+    void conversionComplete(QString, QDir, QDir, int);
+
+public slots:
+    void stop();
+
 private:
     void add_sine(FILE*, WAV_FILE_INFO, float, std::vector<float>);
+    bool mStop;
 };
 
 #endif
