@@ -27,6 +27,7 @@ public:
 
 signals:
     void conversionComplete(QString, QDir, QDir, int);
+    void updateConsole(QString, int);
 
 public slots:
     void stop();

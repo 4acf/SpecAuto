@@ -315,9 +315,19 @@ void Dialog::on_runButton_clicked()
     QMessageBox::information(this, "Press OK to begin", "Press OK to begin"); //include est time to complete???
     connect(&img2wav, &imgwav::conversionComplete, this, &Dialog::onConversionComplete);
     connect(this, &Dialog::on_stop, &img2wav, &imgwav::stop);
+    connect(&img2wav, &imgwav::updateConsole, this, &Dialog::updateConsole);
 
     disable_buttons();
     QFuture<void> future = QtConcurrent::run(&imgwav::writeout, &img2wav, temp, wavOutputDirectory, pngOutputDirectory);
+
+}
+
+void Dialog::updateConsole(QString filename, int percent){
+
+    //converts a filename + a percent to a string formatted as
+    //[filename] percent%
+    QString str = QString::fromStdString("[" + filename.toStdString() + "] " + std::to_string(percent) + "%");
+    ui->console->append(str);
 
 }
 

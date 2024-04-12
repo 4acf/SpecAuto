@@ -57,6 +57,7 @@ private slots:
 
 public slots:
     void onConversionComplete(QString, QDir, QDir, int);
+    void updateConsole(QString, int);
 
 private:
     Ui::Dialog *ui;

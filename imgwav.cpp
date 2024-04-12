@@ -73,6 +73,8 @@ void imgwav::writeout(QDir temp, QDir wavOutputDirectory, QDir pngOutputDirector
 
         WavInfo.NumberOfSamples = (0.2 * 44100) * srcW;
 
+        int one_percent = (srcW * srcH) / 100;
+
         //loop through pixels
         for(int x = 0; x < srcW; x++){
 
@@ -83,6 +85,11 @@ void imgwav::writeout(QDir temp, QDir wavOutputDirectory, QDir pngOutputDirector
                 if(mStop){
                     goto cleanup; //DOES THIS MAKE YOU UPSET
                 }
+
+                int current_pixel_num = (x * srcH) + y;
+
+                if(current_pixel_num > 0 && current_pixel_num % one_percent == 0)
+                    emit updateConsole(fnCopy, current_pixel_num / one_percent);
 
                 //get rgb variables
                 const unsigned char *pixel = data + (3 * (y * srcW + x));
