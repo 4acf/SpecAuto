@@ -312,7 +312,6 @@ void Dialog::on_runButton_clicked()
     int filecount = temp.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files).count();
     ui->progressBar->setMaximum(filecount);
 
-    QMessageBox::information(this, "Press OK to begin", "Press OK to begin"); //include est time to complete???
     connect(&img2wav, &imgwav::conversionComplete, this, &Dialog::onConversionComplete);
     connect(this, &Dialog::on_stop, &img2wav, &imgwav::stop);
     connect(&img2wav, &imgwav::updateConsole, this, &Dialog::updateConsole);
