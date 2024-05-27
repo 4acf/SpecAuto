@@ -24,6 +24,8 @@ For more info on finding this directory: [QTemporaryDir](https://doc.qt.io/qt-6/
 
 -Successive runs will duplicate the messages printed to the progress console.
 
+-Aspect ratio of spectrogram is sometimes the same as source image and sometimes not
+
 ## Credits
 [stb_image](https://github.com/nothings/stb/blob/master/stb_image.h)
 
