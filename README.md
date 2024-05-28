@@ -1,9 +1,13 @@
-# SpecAuto
-
-![Preview Image](Screenshot_1.png)
+<p align="center">
+  <img src="screenshot/title.png">
+</p>
 
 ## Description
 SpecAuto is a program made with Qt to automate the conversion of an image, or sequence of images, to a spectrogram version. It first converts an image to a wav file, and then reproduces the image by running the wav file through a spectrogram tool. It was made to speed up my video editing workflow.
+
+<p align="center">
+  <img src="screenshot/Screenshot_1.png">
+</p>
 
 ## Dependencies and Installation
 To use this program, first install SoundExchange (SOX), which can be found [here](https://sourceforge.net/projects/sox/).
